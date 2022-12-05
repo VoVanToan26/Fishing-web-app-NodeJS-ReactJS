@@ -10,15 +10,18 @@ import SearchBox from "~/components/SearchBox";
 import LoadingBox from "~/components/LoadingBox";
 import MessageBox from "~/components/MessageBox";
 import PrivateRoute from "~/components/PrivateRoute";
+import ChatBox from "~/components/ChatBox";
 
 function App() {
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+
     // add count cart
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
+
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
-    console.log("userInfo", userInfo);
+
     const dispatch = useDispatch();
     const signoutHandler = () => {
         dispatch(signout());
@@ -26,7 +29,7 @@ function App() {
 
     const productCategoryList = useSelector((state) => state.productCategoryList);
     const { loading: loadingCategories, error: errorCategories, categories } = productCategoryList;
-    console.log("productCategoryList", productCategoryList);
+
     useEffect(() => {
         dispatch(listProductCategories());
     }, [dispatch]);
@@ -39,25 +42,19 @@ function App() {
                         <button
                             type="button"
                             className="open-sidebar"
-                            onClick={() => setSidebarIsOpen(true)}
+                            onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
                         >
                             <FontAwesomeIcon icon={faBars} />
                             <i className="fa fa-bars"></i>
                         </button>
                         <Link className="brand" to="/">
-                            Van Toan fishing
+                            Fishing-VN
                         </Link>
                     </div>
                     <div>
-                        {/* <Routes>
-                            <Route
-                                render={({ navigate }) => ( */}
                         <SearchBox></SearchBox>
-                        {/* //         )}
-                        //     ></Route>
-                        // </Routes> */}
                     </div>
-                    <div className="Carrt" style={{ position: "relative" }}>
+                    <div className="Cart" style={{ position: "relative" }}>
                         <Link to="/cart">
                             Cart{" "}
                             <FontAwesomeIcon style={{ fontSize: "2.5rem" }} icon={faCartShopping} />
@@ -130,6 +127,9 @@ function App() {
                                     <li>
                                         <Link to="/userlist">Users</Link>
                                     </li>
+                                    <li>
+                                        <Link to="/support">Support</Link>
+                                    </li>
                                 </ul>
                             </div>
                         )}
@@ -198,7 +198,10 @@ function App() {
                         })}
                     </Routes>
                 </main>
-                <footer className="row center">All right reserved</footer>
+                <footer className="row center">
+                    {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+                    <div>All right reserved</div>{" "}
+                </footer>
             </div>
         </Router>
     );

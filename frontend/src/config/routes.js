@@ -20,6 +20,7 @@ const routes = {
     userList: "/userlist",
     userEdit: "/user/:id/edit",
     seller: "/seller/:id",
+    support: "/support",
 
     search: "/search/name",
     searchCategory: "/search/category/:category",

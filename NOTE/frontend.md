@@ -1,4 +1,4 @@
-1. Taoj create react app
+1. Tạo create react app
    npx create-react-app frontend
 
 2 install react-router-dom
@@ -118,7 +118,6 @@ Click add to cart --> Action --> dispatch ({type, payload})--> Store 16. Build C
     3. handle submit form
     4. edit parse url to get query string
     5. update product list api for search by name
-<<<<<<< HEAD
 56 there is newreview 
  57. Choose Address On Google Map
     1. create google map credentials 
@@ -137,6 +136,5 @@ Click add to cart --> Action --> dispatch ({type, payload})--> Store 16. Build C
     7. install @react-google-maps/api
     8. use it in shipping screen
     9. apply map to the checkout screen
-=======
  vantoanpp111@gmail.com
 pass word mail gun @LeoMessi2617

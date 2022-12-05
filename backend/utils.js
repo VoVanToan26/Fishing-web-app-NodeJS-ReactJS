@@ -1,10 +1,10 @@
 // define t SOME ultility function like generateToken export const jena rate tokan
 import jwt from "jsonwebtoken";
 import mg from "mailgun-js";
-import dotenv from "dotenv"
-dotenv.config()
+import dotenv from "dotenv";
+dotenv.config();
 export const generateToken = (user) => {
-    // obj user for generateToken, josonwetoken secret,
+    // obj user for generateToken, jsonwetoken secret,
     return jwt.sign(
         {
             _id: user._id,
@@ -19,12 +19,17 @@ export const generateToken = (user) => {
             expiresIn: "30d",
         },
     );
+    //sing{userObject,}
 };
 
 export const isAuth = (req, res, next) => {
     const authorization = req.headers.authorization;
+    // console.log("authorization", authorization);
     if (authorization) {
+        // Cắt chuỗi  từ index=6
         const token = authorization.slice(7, authorization.length); // Bearer XXXXXX
+        // console.log("token", token);
+        //jwt.verify(token, secretOrPublicKey, [options, callback])
         jwt.verify(token, process.env.JWT_SECRET || "somethingsecret", (err, decode) => {
             if (err) {
                 res.status(401).send({ message: "Invalid Token" });
@@ -67,10 +72,7 @@ export const mailgun = () =>
         apiKey: process.env.MAILGUN_API_KEY,
         domain: process.env.MAILGUN_DOMAIN,
     });
-    console.log({
-        apiKey: process.env.MAILGUN_API_KEY,
-        domain: process.env.MAILGUN_DOMAIN,
-    });
+
 export const payOrderEmailTemplate = (order) => {
     return `<h1>Thanks for shopping with us</h1>
   <p>
@@ -133,3 +135,4 @@ export const payOrderEmailTemplate = (order) => {
   </p>
   `;
 };
+
