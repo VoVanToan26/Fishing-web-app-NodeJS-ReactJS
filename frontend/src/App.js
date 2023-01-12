@@ -14,12 +14,14 @@ import ChatBox from "~/components/ChatBox";
 
 function App() {
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+
     // add count cart
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
+
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
-    console.log("userInfo", userInfo);
+
     const dispatch = useDispatch();
     const signoutHandler = () => {
         dispatch(signout());
@@ -27,7 +29,7 @@ function App() {
 
     const productCategoryList = useSelector((state) => state.productCategoryList);
     const { loading: loadingCategories, error: errorCategories, categories } = productCategoryList;
-    console.log("productCategoryList", productCategoryList);
+
     useEffect(() => {
         dispatch(listProductCategories());
     }, [dispatch]);
@@ -40,7 +42,7 @@ function App() {
                         <button
                             type="button"
                             className="open-sidebar"
-                            onClick={() => setSidebarIsOpen(true)}
+                            onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
                         >
                             <FontAwesomeIcon icon={faBars} />
                             <i className="fa fa-bars"></i>
@@ -50,15 +52,9 @@ function App() {
                         </Link>
                     </div>
                     <div>
-                        {/* <Routes>
-                            <Route
-                                render={({ navigate }) => ( */}
                         <SearchBox></SearchBox>
-                        {/* //         )}
-                        //     ></Route>
-                        // </Routes> */}
                     </div>
-                    <div className="Carrt" style={{ position: "relative" }}>
+                    <div className="Cart" style={{ position: "relative" }}>
                         <Link to="/cart">
                             Cart{" "}
                             <FontAwesomeIcon style={{ fontSize: "2.5rem" }} icon={faCartShopping} />

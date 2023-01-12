@@ -12,10 +12,9 @@ export default function UserListPage() {
 
     const userList = useSelector((state) => state.userList);
     const { loading, error, users } = userList;
-    console.log("userList", userList);
+    
     const userDelete = useSelector((state) => state.userDelete);
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = userDelete;
-    console.log("userDelete", userDelete);
     useEffect(() => {
         dispatch(listUsers());
         dispatch({

@@ -8,10 +8,13 @@ import {
 } from "~/constants/cartConstants";
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
+    // get data from api/products by id
     const { data } = await Axios.get(`/api/products/${productId}`);
     const {
         cart: { cartItems },
     } = getState();
+    
+    // only add cart when seller id # user id
     if (cartItems.length > 0 && data.seller._id !== cartItems[0].seller._id) {
         dispatch({
             type: CART_ADD_ITEM_FAIL,

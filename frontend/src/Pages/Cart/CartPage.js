@@ -7,11 +7,11 @@ import MessageBox from "~/components/MessageBox";
 function CartPage() {
     const urlGetData = new URLSearchParams(window.location.search);
     const props = useParams();
-    console.log("props", props);
 
     const productId = props.id;
     const qty = urlGetData.get("qty") || 1;
     const cart = useSelector((state) => state.cart);
+    console.log("props", qty);
 
     const { cartItems, error } = cart;
     const dispatch = useDispatch();

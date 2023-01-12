@@ -7,14 +7,15 @@ import LoadingBox from "~/components/LoadingBox";
 import MessageBox from "~/components/MessageBox";
 
 export default function SigninPage() {
-    var props = useLocation();
+    var location = useLocation();
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    // 2 register account  generate
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const redirect = props.search ? props.search.split("=")[1] : "/";
+    const redirect = location.search ? location.search.split("=")[1] : "/";
 
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo, loading, error } = userSignin;
