@@ -130,7 +130,6 @@ io.on("connection", (socket) => {
         }
 
         console.log("Online", user.name);
-
         const admin = users.find((x) => x.isAdmin && x.online);
         if (admin) {
             io.to(admin.socketId).emit("updateUser", updatedUser);
