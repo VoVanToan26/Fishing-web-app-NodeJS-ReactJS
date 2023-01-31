@@ -11,7 +11,7 @@ orderRouter.get(
     isAuth,
     isSellerOrAdmin,
     expressAsyncHandler(async (req, res) => {
-        // get only name from user : Get id of user and load the only user information from user table or userid
+        // get only name from user : Get id of user and load the only user information from user table or userId
         //populate:
         const seller = req.query.seller || "";
         const sellerFilter = seller ? { seller } : {};
@@ -20,6 +20,7 @@ orderRouter.get(
         res.send(orders);
     }),
 );
+
 orderRouter.get(
     "/mine",
     isAuth,

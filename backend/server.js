@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import http from "http";
-// import { Server } from "socket.io";
-const Sever = require("socket.io");
+import { Server } from "socket.io";
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
