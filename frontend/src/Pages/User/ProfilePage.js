@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsUser, updateUserProfile } from "~/actions/userActions";
@@ -14,7 +15,32 @@ export default function ProfilePage() {
     const [sellerName, setSellerName] = useState("");
     const [sellerLogo, setSellerLogo] = useState("");
     const [sellerDescription, setSellerDescription] = useState("");
+    const [loadingUpload, setLoadingUpload] = useState(false);
+    const [errorUpload, setErrorUpload] = useState("");
 
+    const uploadFileHandler = async (e) => {
+        // get file from event upload
+        const file = e.target.files[0];
+        // create form data
+        const bodyFormData = new FormData();
+        bodyFormData.append("image", file);
+        // change value loadingUpload
+        setLoadingUpload(true);
+        try {
+            // get data fro
+            const { data } = await Axios.post("/api/uploads/sellerLogo", bodyFormData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${userInfo.token}`,
+                },
+            });
+            setSellerLogo(data);
+            setLoadingUpload(false);
+        } catch (error) {
+            setErrorUpload(error.message);
+            setLoadingUpload(false);
+        }
+    };
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
     const userDetails = useSelector((state) => state.userDetails);
@@ -26,7 +52,12 @@ export default function ProfilePage() {
         error: errorUpdate,
         loading: loadingUpdate,
     } = userUpdateProfile;
-
+   
+    useEffect(() => {
+        if (successUpdate) {
+            window.scrollTo(0, 0);
+        }
+    }, [userUpdateProfile]);
     const dispatch = useDispatch();
     //send request to get userinformation --> user obj by data from backend
     useEffect(() => {
@@ -59,7 +90,7 @@ export default function ProfilePage() {
                     sellerName,
                     sellerLogo,
                     sellerDescription,
-                })
+                }),
             );
         }
     };
@@ -142,6 +173,20 @@ export default function ProfilePage() {
                                         onChange={(e) => setSellerLogo(e.target.value)}
                                     ></input>
                                 </div>
+                                <div>
+                                    <label htmlFor="imageFile">Image File</label>
+                                    <input
+                                        type="file"
+                                        id="imageFile"
+                                        label="Choose Image"
+                                        onChange={uploadFileHandler}
+                                    ></input>
+                                    {loadingUpload && <LoadingBox></LoadingBox>}
+                                    {errorUpload && (
+                                        <MessageBox variant="danger">{errorUpload}</MessageBox>
+                                    )}
+                                </div>
+
                                 <div>
                                     <label htmlFor="sellerDescription">Seller Description</label>
                                     <input

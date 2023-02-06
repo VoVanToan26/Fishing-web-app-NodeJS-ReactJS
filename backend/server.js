@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import http from "http";
-import { Server } from "socket.io";
+import { Server } from "../node_modules/socket.io/dist/index.js";
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 mongoose
     .connect(
         process.env.MONGODB_URL ||
-            "mongodb+srv://vantoan26:vantoan1@toan.hmtbaxg.mongodb.net/?retryWrites=true&w=majority",
+            "mongodb+srv://vantoan26:vantoan1@toan.hmtbaxg.mongodb.net/fishing_vn?retryWrites=true&w=majority",
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -88,7 +88,7 @@ const users = [];
 // when we have new user in client
 ///Handle khi có connect từ client tới sever
 io.on("connection", (socket) => {
-    console.log("socket", socket);
+    // console.log("socket", socket);
 
     socket.on("disconnect", () => {
         // Tìm user đang kết nối với socket id
