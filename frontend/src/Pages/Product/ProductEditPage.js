@@ -16,6 +16,10 @@ export default function ProductEditPage() {
     const [image, setImage] = useState("");
     const [category, setCategory] = useState("");
     const [brand, setBrand] = useState("");
+
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
+
     const [countInStock, setCountInStock] = useState("");
     const [description, setDescription] = useState("");
 
@@ -60,14 +64,13 @@ export default function ProductEditPage() {
                 brand,
                 countInStock,
                 description,
-            })
+            }),
         );
     };
+
     const [loadingUpload, setLoadingUpload] = useState(false);
     const [errorUpload, setErrorUpload] = useState("");
 
-    const userSignin = useSelector((state) => state.userSignin);
-    const { userInfo } = userSignin;
     const uploadFileHandler = async (e) => {
         // get file from event upload
         const file = e.target.files[0];
@@ -78,7 +81,7 @@ export default function ProductEditPage() {
         setLoadingUpload(true);
         try {
             // get data fro
-            const { data } = await Axios.post("/api/uploads", bodyFormData, {
+            const { data } = await Axios.post("/api/uploads/productImage", bodyFormData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${userInfo.token}`,
@@ -91,6 +94,7 @@ export default function ProductEditPage() {
             setLoadingUpload(false);
         }
     };
+    
     return (
         <div>
             <form className="form" onSubmit={submitHandler}>
