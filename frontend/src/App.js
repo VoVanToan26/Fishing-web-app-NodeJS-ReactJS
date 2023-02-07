@@ -48,7 +48,7 @@ function App() {
                             <i className="fa fa-bars"></i>
                         </button>
                         <Link className="brand" to="/">
-                            Van Toan fishing
+                            Fishing-VN
                         </Link>
                     </div>
                     <div>
