@@ -1,25 +1,25 @@
 import config from "~/config";
-import HomePage from "~/Pages/Home";
-import ProductPage from "~/Pages/Product";
-import CartPage from "~/Pages/Cart";
-import SigninPage from "~/Pages/Signin";
-import RegisterPage from "~/Pages/Register";
-import ShippingAddressPage from "~/Pages/Shipping";
-import PaymentPage from "~/Pages/Payment";
-import PlaceOrderPage from "~/Pages/PlaceOrder";
-import OrderPage from "~/Pages/Order";
-import OrderHistoryPage from "~/Pages/OrderHistory";
-import ProfilePage from "~/Pages/Profile";
-import ProductListPage from "~/Pages/ProductList";
-import ProductEditPage from "~/Pages/ProductEdit";
-import OrderListPage from "~/Pages/OrderList";
-import UserListPage from "~/Pages/UserList";
-import UserEditPage from "~/Pages/UserEdit";
-import SellerPage from "~/Pages/SellerPage";
-import SearchPage from "~/Pages/SearchPage";
-import MapPage from "~/Pages/MapPage";
-import DashboardPage from "~/Pages/Dashboard/DashboardPage";
-import SupportPage from "~/Pages/Support";
+import DashboardPage from "~/Pages/Admin/DashboardPage";
+import SupportPage from "~/Pages/Admin/SupportPage";
+import CartPage from "~/Pages/Cart/CartPage";
+import MapPage from "~/Pages/Cart/MapPage";
+import PaymentPage from "~/Pages/Cart/PaymentPage";
+import PlaceOrderPage from "~/Pages/Cart/PlaceOrderPage";
+import ShippingAddressPage from "~/Pages/Cart/ShippingAddressPage";
+import HomePage from "~/Pages/Home/HomePage";
+import OrderHistoryPage from "~/Pages/Order/OrderHistoryPage";
+import OrderListPage from "~/Pages/Order/OrderListPage";
+import OrderPage from "~/Pages/Order/OrderPage";
+import ProductEditPage from "~/Pages/Product/ProductEditPage";
+import ProductListPage from "~/Pages/Product/ProductListPage";
+import ProductPage from "~/Pages/Product/ProductPage";
+import SearchPage from "~/Pages/Product/SearchPage";
+import SellerPage from "~/Pages/SellerPage/SellerPage";
+import ProfilePage from "~/Pages/User/ProfilePage";
+import RegisterPage from "~/Pages/User/RegisterPage";
+import SigninPage from "~/Pages/User/SigninPage";
+import userEditPage from "~/Pages/User/UserEditPage";
+import UserListPage from "~/Pages/User/UserListPage";
 
 // Layouts
 
@@ -69,7 +69,7 @@ const publicRoutes = [
     },
     {
         path: config.routes.userEdit,
-        component: UserEditPage,
+        component: userEditPage,
         private: true,
         isAminPage: true,
     },

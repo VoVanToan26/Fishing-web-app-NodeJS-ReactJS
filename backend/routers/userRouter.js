@@ -32,6 +32,7 @@ userRouter.post(
     expressAsyncHandler(async (req, res) => {
         const user = await User.findOne({ email: req.body.email });
         if (user) {
+            // So sánh ký tự cua password sau login
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 res.send({
                     _id: user._id,
@@ -140,6 +141,7 @@ userRouter.put(
         }
     })
 );
+
 userRouter.delete(
     "/:id",
     isAuth,
