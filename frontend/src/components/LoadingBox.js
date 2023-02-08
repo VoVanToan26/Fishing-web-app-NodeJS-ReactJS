@@ -5,7 +5,7 @@ import React from "react";
 export default function LoadingBox() {
     return (
         <div className="loading">
-            <FontAwesomeIcon icon={faSpinner} spin /> Loading...
+            <FontAwesomeIcon icon={faSpinner} /> Loading...
         </div>
     );
 }

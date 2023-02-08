@@ -11,13 +11,12 @@ function Rating({ rating, numberReviews = 0, caption }) {
                 {Array(5)
                     .fill(null)
                     .map((value, index) => (
-                    
                         <FontAwesomeIcon
                             key={index}
                             icon={
-                                rating >= index+1
+                                rating > index
                                     ? faStarSolid
-                                    : rating < index + 1
+                                    : rating < index - 1
                                     ? faStarRegular
                                     : faStarHalfAlt
                             }

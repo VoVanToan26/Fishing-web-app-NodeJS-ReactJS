@@ -30,7 +30,7 @@ import {
 export const signin = (email, password) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
     try {
-        // get data from api
+        // recive data from api
         const { data } = await Axios.post("/api/users/signin", { email, password });
         // dispatch the data type success and payload
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });

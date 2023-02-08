@@ -1,17 +1,16 @@
 {
-
-    "name": "fishing-vn",
-    "version": "1.0.0",
+    "name": "Fishing-web-app-NodeJS-ReactJS",
     "type": "module",
+    "version": "1.0.0",
     "description": "��#\u0000 \u0000W\u0000E\u0000B\u0000_\u0000A\u0000M\u0000A\u0000Z\u0000O\u0000N\u0000E\u0000\r\u0000 \u0000",
     "main": "index.js",
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "cd frontedn && gh-pages -d build",
         "build": "cd frontend && npm install --force && npm run build",
         "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
         "heroku-postbuild": "cd frontend && npm install --force && npm run build",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "serve": "node dist/server.js"
-
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
@@ -22,11 +21,9 @@
     "bugs": {
         "url": "https://github.com/VoVanToan26/WEB_AMAZONE/issues"
     },
-    "homepage": "https://github.com/VoVanToan26/Fishing-web-app-NodeJS-ReactJS",
+    "homepage": "https://VoVanToan26.github.io/Fishing-web-app-NodeJS-ReactJS",
     "dependencies": {
         "bcryptjs": "^2.4.3",
-        "concurrently": "^7.6.0",
-
         "dotenv": "^16.0.3",
         "express": "^4.18.2",
         "express-async-handler": "^1.2.0",
@@ -37,9 +34,7 @@
         "multer": "^1.4.5-lts.1",
         "react-redux": "^8.0.4",
         "redux": "^4.2.0",
-        "socket.io": "^4.5.4",
-        "webpack-cli": "^3.3.12"
-
+        "socket.io": "^4.5.4"
     },
     "devDependencies": {
         "eslint": "^8.26.0",

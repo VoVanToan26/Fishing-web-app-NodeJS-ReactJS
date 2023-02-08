@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import SigninPage from '~/Pages/User/SigninPage';
+import SigninPage from '~/Pages/Signin';
 
 function PrivateRoute(
     {

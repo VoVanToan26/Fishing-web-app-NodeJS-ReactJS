@@ -11,19 +11,17 @@ import { listTopSellers } from "~/actions/userActions";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-    const dispatch = useDispatch();
-
     const userTopSellersList = useSelector((state) => state.userTopSellersList);
     const { loading: loadingSellers, error: errorSellers, users: sellers } = userTopSellersList;
-    
+    console.log("userTopSellersList", userTopSellersList);
+    const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
     const { loading, error, products } = productList;
 
     useEffect(() => {
         dispatch(listProducts({}));
         dispatch(listTopSellers());
-    }, [dispatch], products);
-    
+    }, [dispatch]);
     return (
         <div>
             <h2>Top Sellers</h2>
@@ -34,7 +32,7 @@ function HomePage() {
             ) : (
                 <>
                     {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
-                    <Carousel showArrows autoPlay showThumbs={true}>
+                    <Carousel showArrows autoPlay showThumbs={false}>
                         {sellers.map((seller) => (
                             <div key={seller._id} className="containerSeller">
                                 <Link to={`/seller/${seller._id}`}>
