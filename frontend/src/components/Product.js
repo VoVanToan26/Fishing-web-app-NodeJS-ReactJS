@@ -4,11 +4,11 @@ import Rating from "~/components/Rating";
 
 function Product({ product }) {
     return (
-        <div key={product._id} className="card">
+        <div key={product._id} className="card product-container">
             <Link to={`/product/${product._id}`}>
-                <img className="medium" src={product.image} alt={product.name} />
+                <img className="medium img-container" src={product.image} alt={product.name} />
             </Link>
-            <div className="card-body">
+            <div className="card-body ">
                 <Link to={`/product/${product._id}`}>
                     <h2>{product.name}</h2>
                 </Link>
