@@ -5,6 +5,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
+import cors from "cors";
 import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
 import orderRouter from "./routers/orderRouter.js";
@@ -12,7 +13,12 @@ import uploadRouter from "./routers/uploadRouter.js";
 // user file .env to get aut, ...
 dotenv.config();
 const app = express();
+const options = {
+    credentials: true,
+    origin: "*",
+};
 
+app.use(cors(options));
 // use middleware
 app.use(express.json());
 
@@ -27,7 +33,7 @@ mongoose
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-        },
+        }
     )
     .then(() => console.log("MongoDB Connected!"))
     .catch((error) => console.log("MongoDB did not connect: ", error));
@@ -130,7 +136,7 @@ io.on("connection", (socket) => {
         }
 
         console.log("Online", user.name);
-        
+
         const admin = users.find((x) => x.isAdmin && x.online);
         if (admin) {
             io.to(admin.socketId).emit("updateUser", updatedUser);

@@ -11,8 +11,11 @@ import LoadingBox from "~/components/LoadingBox";
 import MessageBox from "~/components/MessageBox";
 import PrivateRoute from "~/components/PrivateRoute";
 import ChatBox from "~/components/ChatBox";
-
+import axios from "axios";
 function App() {
+    axios.defaults.baseURL = process.env.API || "http://ecommerce-app.vantoanvo.vntp.com:5000/";
+    console.log("API", axios.defaults.baseURL);
+
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
 
     // add count cart

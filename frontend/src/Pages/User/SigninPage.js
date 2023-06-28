@@ -39,7 +39,7 @@ export default function SigninPage() {
                 </div>
                 {loading && <LoadingBox></LoadingBox>}
                 {error && <MessageBox variant="danger">{error}</MessageBox>}
-                <div>
+                <div className="input-container">
                     <label htmlFor="email">Email address</label>
                     <input
                         type="email"
@@ -49,7 +49,7 @@ export default function SigninPage() {
                         onChange={(e) => setEmail(e.target.value)}
                     ></input>
                 </div>
-                <div>
+                <div className="input-container">
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"
