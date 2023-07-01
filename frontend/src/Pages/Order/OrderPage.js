@@ -67,7 +67,7 @@ export default function OrderPage() {
         <div>
             <h1>Order {order._id}</h1>
             <div className="row top">
-                <div className="col-2">
+                <div className="col-sm-8">
                     <ul>
                         <li>
                             <div className="card card-body">
@@ -134,7 +134,7 @@ export default function OrderPage() {
                         </li>
                     </ul>
                 </div>
-                <div className="col-1">
+                <div className="col-sm-4">
                     <div className="card card-body">
                         <ul>
                             <li>

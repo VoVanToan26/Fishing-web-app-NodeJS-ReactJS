@@ -24,7 +24,7 @@ function Rating({ rating, numberReviews = 0, caption }) {
                         />
                     ))}
             </span>
-            {caption ? <span>{caption}</span> : <span>{numberReviews + " reviews"}</span>}
+               {caption ? <span>{caption}</span> : <span>{numberReviews + " reviews"}</span>}
         </div>
     );
 }

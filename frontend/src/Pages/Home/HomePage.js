@@ -15,18 +15,22 @@ function HomePage() {
 
     const userTopSellersList = useSelector((state) => state.userTopSellersList);
     const { loading: loadingSellers, error: errorSellers, users: sellers } = userTopSellersList;
-    
+
     const productList = useSelector((state) => state.productList);
     const { loading, error, products } = productList;
 
-    useEffect(() => {
-        dispatch(listProducts({}));
-        dispatch(listTopSellers());
-    }, [dispatch], products);
-    
+    useEffect(
+        () => {
+            dispatch(listProducts({}));
+            dispatch(listTopSellers());
+        },
+        [dispatch],
+        products
+    );
+
     return (
         <div>
-            <h2>Top Sellers</h2>
+            <h2 className="font-weight-bold">Top Sellers</h2>
             {loadingSellers ? (
                 <LoadingBox></LoadingBox>
             ) : errorSellers ? (
@@ -34,19 +38,21 @@ function HomePage() {
             ) : (
                 <>
                     {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
-                    <Carousel showArrows autoPlay showThumbs={true}>
-                        {sellers.map((seller) => (
-                            <div key={seller._id} className="containerSeller">
-                                <Link to={`/seller/${seller._id}`}>
-                                    <img src={seller.seller.logo} alt={seller.seller.name} />
-                                    <p className="legend">{seller.seller.name}</p>
-                                </Link>
-                            </div>
-                        ))}
-                    </Carousel>
+                    <div className="carousel-container">
+                        <Carousel showArrows autoPlay showThumbs={false}>
+                            {sellers.map((seller) => (
+                                <div key={seller._id} className="containerSeller">
+                                    <Link to={`/seller/${seller._id}`}>
+                                        <img src={seller.seller.logo} alt={seller.seller.name} />
+                                        <p className="legend">{seller.seller.name}</p>
+                                    </Link>
+                                </div>
+                            ))}
+                        </Carousel>
+                    </div>
                 </>
             )}
-            <h2>Featured Products</h2>
+            <h2 className="font-weight-bold">Featured Products</h2>
             {loading ? (
                 <LoadingBox></LoadingBox>
             ) : error ? (
@@ -54,10 +60,12 @@ function HomePage() {
             ) : (
                 <>
                     {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-                    <div className="row center">
+                    <div className="row center product-list ">
+                        <div className="col"></div>
                         {products.map((product) => (
                             <Product key={product._id} product={product}></Product>
                         ))}
+                        <div className="col"></div>
                     </div>
                 </>
             )}

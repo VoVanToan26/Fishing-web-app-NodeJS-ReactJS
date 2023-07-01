@@ -22,8 +22,8 @@ export default function SellerPage() {
         dispatch(listProducts({ seller: sellerId }));
     }, [dispatch, sellerId]);
     return (
-        <div className="row top">
-            <div className="col-1">
+        <div className="row d-flex justify-content-around  top">
+            <div className="col-md-4 col-12">
                 {loading ? (
                     <LoadingBox></LoadingBox>
                 ) : error ? (
@@ -57,7 +57,7 @@ export default function SellerPage() {
                     </ul>
                 )}
             </div>
-            <div className="col-3">
+            <div className="col-md-8 col-12">
                 {loadingProducts ? (
                     <LoadingBox></LoadingBox>
                 ) : errorProducts ? (

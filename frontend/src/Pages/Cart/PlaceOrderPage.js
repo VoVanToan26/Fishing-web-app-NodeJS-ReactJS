@@ -37,7 +37,7 @@ export default function PlaceOrderPage() {
         <div>
             <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
             <div className="row top">
-                <div className="col-2">
+                <div className="col col-sm-8">
                     <ul>
                         <li>
                             <div className="card card-body">
@@ -90,7 +90,7 @@ export default function PlaceOrderPage() {
                         </li>
                     </ul>
                 </div>
-                <div className="col-1">
+                <div className="col col-sm-4">
                     <div className="card card-body">
                         <ul>
                             <li>

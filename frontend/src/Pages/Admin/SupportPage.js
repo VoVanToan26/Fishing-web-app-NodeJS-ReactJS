@@ -105,7 +105,7 @@ export default function SupportPage() {
 
     return (
         <div className="row top full-container">
-            <div className="col-1 support-users">
+            <div className="col col-3 support-users">
                 {users.filter((x) => x._id !== userInfo._id).length === 0 && (
                     <MessageBox>No Online User Found</MessageBox>
                 )}
@@ -133,7 +133,7 @@ export default function SupportPage() {
                         ))}
                 </ul>
             </div>
-            <div className="col-3 support-messages">
+            <div className="col col-9 support-messages">
                 {!selectedUser._id ? (
                     <MessageBox>Select a user to start chat</MessageBox>
                 ) : (

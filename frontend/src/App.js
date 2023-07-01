@@ -14,6 +14,7 @@ import ChatBox from "~/components/ChatBox";
 import axios from "axios";
 function App() {
     axios.defaults.baseURL = process.env.API || "http://ecommerce-app.vantoanvo.vntp.com:5000/";
+    // axios.defaults.baseURL = process.env.API || "http://localhost:5000/";
     console.log("API", axios.defaults.baseURL);
 
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
@@ -41,23 +42,21 @@ function App() {
         <Router>
             <div className="grid-container">
                 <header className="row">
-                    <div>
+                    <div className="ml-2 ">
                         <button
-                            type="button"
                             className="open-sidebar"
                             onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
                         >
-                            <FontAwesomeIcon icon={faBars} />
-                            <i className="fa fa-bars"></i>
+                            <FontAwesomeIcon icon={faBars} className="p-0" />
                         </button>
                         <Link className="brand" to="/">
-                            Fishing-VN
+                            E-Commerce
                         </Link>
                     </div>
-                    <div>
+                    <div className="none-mobile">
                         <SearchBox></SearchBox>
                     </div>
-                    <div className="Cart" style={{ position: "relative" }}>
+                    <div className="none-mobile" style={{ position: "relative" }}>
                         <Link to="/cart">
                             Cart{" "}
                             <FontAwesomeIcon style={{ fontSize: "2.5rem" }} icon={faCartShopping} />
@@ -201,10 +200,10 @@ function App() {
                         })}
                     </Routes>
                 </main>
-                <footer className="row center">
+                {/* <footer className="row center">
                     {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
                     <div>All right reserved</div>{" "}
-                </footer>
+                </footer> */}
             </div>
         </Router>
     );

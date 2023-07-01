@@ -51,32 +51,35 @@ export default function SearchPage() {
     };
 
     return (
-        <div>
+        <>
             <div className="row">
-                {loading ? (
-                    <LoadingBox></LoadingBox>
-                ) : error ? (
-                    <MessageBox variant="danger">{error}</MessageBox>
-                ) : (
-                    <div>{products.length} Results</div>
-                )}
+                <div className=" col-sm-2">
+                    {loading ? (
+                        <LoadingBox></LoadingBox>
+                    ) : error ? (
+                        <MessageBox variant="danger">{error}</MessageBox>
+                    ) : (
+                        <div>{products.length} Results</div>
+                    )}
+                </div>
+                <div className=" col">
+                    Sort by{" "}
+                    <select
+                        className="p-2"
+                        value={order}
+                        onChange={(e) => {
+                            navigate(getFilterUrl({ order: e.target.value }));
+                        }}
+                    >
+                        <option value="newest">Newest Arrivals</option>
+                        <option value="lowest">Price: Low to High</option>
+                        <option value="highest">Price: High to Low</option>
+                        <option value="toprated">Avg. Customer Reviews</option>
+                    </select>
+                </div>
             </div>
-            <div>
-                Sort by{" "}
-                <select
-                    value={order}
-                    onChange={(e) => {
-                        navigate(getFilterUrl({ order: e.target.value }));
-                    }}
-                >
-                    <option value="newest">Newest Arrivals</option>
-                    <option value="lowest">Price: Low to High</option>
-                    <option value="highest">Price: High to Low</option>
-                    <option value="toprated">Avg. Customer Reviews</option>
-                </select>
-            </div>
-            <div className="row top">
-                <div className="col-1">
+            <div className="row d-flex justify-content-around  top">
+                <div className="col-sm-3">
                     <h3>Department</h3>
                     <div>
                         {loadingCategories ? (
@@ -139,7 +142,7 @@ export default function SearchPage() {
                         </ul>
                     </div>
                 </div>
-                <div className="col-3">
+                <div className="col-sm-9">
                     {loading ? (
                         <LoadingBox></LoadingBox>
                     ) : error ? (
@@ -147,7 +150,7 @@ export default function SearchPage() {
                     ) : (
                         <>
                             {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-                            <div className="row center">
+                            <div className="row center mt-3">
                                 {products.map((product) => (
                                     <Product key={product._id} product={product}></Product>
                                 ))}
@@ -167,6 +170,6 @@ export default function SearchPage() {
                     )}
                 </div>
             </div>
-        </div>
+        </>
     );
 }

@@ -33,7 +33,7 @@ function CartPage() {
 
     return (
         <div className="row top">
-            <div className="col-2">
+            <div className="col col-xl-8">
                 <h1>Shopping Cart</h1>
                 {error && <MessageBox variant="danger">{error}</MessageBox>}
                 {cartItems.length === 0 ? (
@@ -86,7 +86,7 @@ function CartPage() {
                     </ul>
                 )}
             </div>
-            <div className="col-1">
+            <div className="col col-xl-4">
                 <div className="card card-body">
                     <ul>
                         <li>

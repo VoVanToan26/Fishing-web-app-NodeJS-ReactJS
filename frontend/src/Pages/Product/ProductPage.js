@@ -58,12 +58,12 @@ const ProductPage = () => {
                 <MessageBox variant="danger">{error}</MessageBox>
             ) : (
                 <div>
-                    <Link to="/">Back to result</Link>
+                    <Link to="/">Back </Link>
                     <div className="row top">
-                        <div className="product-item col-2">
+                        <div className="product-item d-flex justify-content-center col-xl-5">
                             <img className="large" src={product.image} alt={product.name}></img>
                         </div>
-                        <div className="product-item  col-1">
+                        <div className="product-item  col-6  col-xl-3">
                             <ul>
                                 <li>
                                     <h1>{product.name}</h1>
@@ -74,14 +74,14 @@ const ProductPage = () => {
                                         numberReviews={product.numberReviews || "0"}
                                     ></Rating>
                                 </li>
-                                <li>Pirce : ${product.price}</li>
+                                <li>Pirce :<span className="product-price">${product.price}</span> </li>
                                 <li>
                                     Description:
                                     <p>{product.description}</p>
                                 </li>
                             </ul>
                         </div>
-                        <div className="product-item  col-1">
+                        <div className="product-item  col-6 col-xl-3">
                             <div className="card card-body">
                                 <li>
                                     Seller{" "}
@@ -99,7 +99,7 @@ const ProductPage = () => {
                                     <li>
                                         <div className="row">
                                             <div>Price</div>
-                                            <div className="price">${product.price}</div>
+                                            <div className="price product-price">${product.price}</div>
                                         </div>
                                     </li>
                                     <li>
@@ -121,6 +121,7 @@ const ProductPage = () => {
                                                     <div>Qty</div>
                                                     <div>
                                                         <select
+                                                            className=" m-2"
                                                             value={qty}
                                                             onChange={(e) => setQty(e.target.value)}
                                                         >
